@@ -14,9 +14,6 @@ var apiKey = "a09d33651864566372276fdd0b24595f";
 
 
 
-var latitude = 0
-var longitude = 0
-
 var searchInput = document.getElementById("searchInput");
 var searchBtn = document.getElementById("searchBtn");
 
@@ -29,7 +26,7 @@ console.log("test is displaying!");
 //Today's API 
 // http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=a09d33651864566372276fdd0b24595f
 
-var dateZero =  document.getElementById("#dateZero");
+
 function getTodayResults() {
     //sample fetch request
     var apiUrl  = "http://api.openweathermap.org/data/2.5/weather?q=" + searchInput.value + ",&APPID=a09d33651864566372276fdd0b24595f";
@@ -40,24 +37,34 @@ function getTodayResults() {
           return response.json();
         })
         .then(function (data) {
-         
-          var dateZero = data.list[0].dt_txt;
-          console.log(dateZero);
-          return dateZero;
+          console.log(data);
+      
+
+        var cityName = data.name;
+        document.getElementById("cityName").innerHTML = "Location: " + cityName;
           //var date = dayjs.unix(unixTimestamp).format('DD/MM/YYYY');
-        console.log(data);
-    
+        console.log(cityName);
         console.log("getTodayResults API response received!");
+        
+        callBackToCurrent(cityName);
       });
+  
   }   
+  function callBackToCurrent(name){
+    cityName = name;
+    console.log(cityName)
+    return
+  }
 
-
+// function callBackToCurrent(current){
+//   console.log(current);
+// }
 //5 Day Forecast
-var dateOne = document.getElementById("#dateOne")
-var dateTwo = document.getElementById("#dateTwo")
-var dateThree = document.getElementById("#dateThree")
-var dateFour = document.getElementById("#dateFour")
-var dateFive = document.getElementById("#dateFive")
+var dayOne = document.getElementById("#day1");
+var dayTwo = document.getElementById("#day2");
+var dayThree = document.getElementById("#day3");
+var dayFour = document.getElementById("#day4");
+var dayFive = document.getElementById("#day5");
 // dateOne.innerHTML = 
 // var dateTwo = document.getElementById("#dateTwo")
 // var dateThree = document.getElementById("#dateThree")
@@ -74,22 +81,19 @@ function getForecastResults() {
         return response.json();
       })
       .then(function (data) {
-       // displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-    
-       var dateOne = data.list[8].dt_txt;
-       var dateTwo = data.list[16].dt_txt;
-       var dateThree = data.list[24].dt_txt;
-       var dateFour = data.list[32].dt_txt;
-       var dateFive = data.list[39].dt_txt;
+
+       var dayZero = {date: data.list[0].dt_txt, humidity: data.list[0].main.humidity, temp: data.list[0].main.temp, wind: data.list[0].wind.speed}
+       var dayOne = {date: data.list[8].dt_txt, humidity: data.list[8].main.humidity, temp: data.list[8].main.temp, wind: data.list[8].wind.speed}
+       var dayTwo = {date: data.list[16].dt_txt, humidity: data.list[16].main.humidity, temp: data.list[16].main.temp, wind: data.list[16].wind.speed}
+       var dayThree = {date: data.list[24].dt_txt, humidity: data.list[24].main.humidity, temp: data.list[24].main.temp, wind: data.list[24].wind.speed}
+       var dayFour = {date: data.list[32].dt_txt, humidity: data.list[32].main.humidity, temp: data.list[32].main.temp, wind: data.list[32].wind.speed}
+       var dayFive = {date: data.list[39].dt_txt, humidity: data.list[39].main.humidity, temp: data.list[39].main.temp, wind: data.list[39].wind.speed}
+     //  var dayThree = {date: data.list[24].dt_txt, humidity: data.list[24].main.humidity, temp: data.list[24].main.temp}
       //  var unix2 = data.list[2].dt
       //  var unix3 = data.list[3].dt
       //  var unix4 = data.list[4].dt
       //  var unix5 = data.list[5].dt
-      console.log(dateOne);
-      console.log(dateTwo);
-      console.log(dateThree);
-      console.log(dateFour);
-      console.log(dateFive);
+
 
       //  var dateOne = dayjs.unix(unixTimeStamp).format('DD/MM/YYYY');
       //  var dateTwo = dayjs.unix2(unixTimestamp2).format('DD/MM/YYYY');
@@ -98,12 +102,42 @@ function getForecastResults() {
       //  var dateFive = dayjs.unix5(unixTimestamp[5]).format('DD/MM/YYYY');
       console.log(data.list[0].main.humidity);
       console.log(data.list[0].main.temp);
-      console.log(data.list[0].name);
-      console.log(data.list)
-     // console.log(data.list[0].city.main);
-      console.log("getTodayResults API response received!");
+    // console.log(array display in inspector)
+      console.log(data.list);
+     // console.log(test for getForecastResults API response received?)
+      console.log("getForecastResults API response received!");
+      callBackToForecast(dayZero);
+      document.getElementById("day0").innerHTML = "Today: " + JSON.stringify(dayZero);
+
+      callBackToForecast(dayOne);
+      document.getElementById("day1").innerHTML = "Today +1: " + JSON.stringify(dayOne);
+
+      callBackToForecast(dayTwo);
+      document.getElementById("day2").innerHTML = "Today +2: " + JSON.stringify(dayTwo);
+
+      callBackToForecast(dayThree);
+      document.getElementById("day3").innerHTML = "Today +3: " + JSON.stringify(dayThree);
+
+      callBackToForecast(dayFour);
+      document.getElementById("day4").innerHTML = "Today: +4" + JSON.stringify(dayFour);
+
+      callBackToForecast(dayFive);
+      document.getElementById("day5").innerHTML = "Today: +5" + JSON.stringify(dayFive);
+ 
+    
+
+  
+
+
     });
 }   
+
+function callBackToForecast(day){
+
+  console.log(day);
+  return
+}
+// var dayZero = getForecastResults()
 
 //var apiURL2 = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&appid=' + apiKey;
 
@@ -121,3 +155,5 @@ function getForecastResults() {
 //         console.log(cityName);
 //         console.log("getForecastResults API response received!");
 //       })
+
+console.log(cityName);
