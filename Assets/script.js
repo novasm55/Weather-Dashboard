@@ -29,7 +29,7 @@ console.log("test is displaying!");
 
 function getTodayResults() {
     //sample fetch request
-    var apiUrl  = "http://api.openweathermap.org/data/2.5/weather?q=" + searchInput.value + ",&APPID=a09d33651864566372276fdd0b24595f";
+    var apiUrl  = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInput.value + ",&APPID=a09d33651864566372276fdd0b24595f";
       fetch(apiUrl, {
         method: 'GET', //GET is the default.
       })
@@ -73,7 +73,7 @@ var dayFive = document.getElementById("#day5");
 
 function getForecastResults() {
   //sample fetch request
-  var apiUrl2  = "http://api.openweathermap.org/data/2.5/forecast?q=" + searchInput.value + ",&APPID=a09d33651864566372276fdd0b24595f";
+  var apiUrl2  = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchInput.value + ",&APPID=a09d33651864566372276fdd0b24595f";
     fetch(apiUrl2, {
       method: 'GET', //GET is the default.
     })
