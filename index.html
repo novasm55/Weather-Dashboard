@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>Weather App</title>
 </head>
 <body>
@@ -17,24 +18,42 @@
 
 <div id="todayWeatherContainer">
     <div id="cityName"></div>
-    <div id = "day0"></div>
+  
 
+    <div id = "day0"></div>
+    <img id="0icon">
 
 </div>
 
 <div id="5dayForecast">
     <div id="day1"></div>
-      
+    <img id="1icon">
+
     <div id="day2"></div>
-  
+    <img id="2icon">
+
     <div id="day3"></div>
-    
+    <img id="3icon">
+
     <div id="day4"></div>
-  
+    <img id="4icon">
+
     <div id="day5"></div>
-    
+    <img id="5icon">
 </div>
 <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
 <script src="./Assets/script.js"></script>
 </body>
 
+<!-- Well, I know a way using jQuery.
+
+
+At the HTML above you see the unique thing missing is the src attribute, so let's fill it with some jQuery and JavaScript. You may create a variable to hold the icon code provided by the API like:
+
+        var iconcode = a.weather[0].icon;
+After it you should concatenate this var iconcode with the url that contains the icons, like:
+
+        var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+Finally just change src attribute in the DOM by doing this:
+
+        $('#wicon').attr('src', iconurl); -->
