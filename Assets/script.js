@@ -19,8 +19,12 @@ var searchBtn = document.getElementById("searchBtn");
 
 searchBtn.addEventListener('click', getTodayResults);
 searchBtn.addEventListener('click', getForecastResults);
-// Add local storage set to store search query
+searchBtn.addEventListener('click', saveCityEntered);
 
+// Add local storage set to store search query
+function saveCityEntered() {
+  
+}
 console.log("test is displaying!");
 
 //Today's API 
@@ -65,6 +69,9 @@ var dayTwo = document.getElementById("#day2");
 var dayThree = document.getElementById("#day3");
 var dayFour = document.getElementById("#day4");
 var dayFive = document.getElementById("#day5");
+
+
+
 // dateOne.innerHTML = 
 // var dateTwo = document.getElementById("#dateTwo")
 // var dateThree = document.getElementById("#dateThree")
@@ -82,12 +89,15 @@ function getForecastResults() {
       })
       .then(function (data) {
 
-       var dayZero = {date: data.list[0].dt_txt, humidity: data.list[0].main.humidity, temp: data.list[0].main.temp, wind: data.list[0].wind.speed}
-       var dayOne = {date: data.list[8].dt_txt, humidity: data.list[8].main.humidity, temp: data.list[8].main.temp, wind: data.list[8].wind.speed}
-       var dayTwo = {date: data.list[16].dt_txt, humidity: data.list[16].main.humidity, temp: data.list[16].main.temp, wind: data.list[16].wind.speed}
-       var dayThree = {date: data.list[24].dt_txt, humidity: data.list[24].main.humidity, temp: data.list[24].main.temp, wind: data.list[24].wind.speed}
-       var dayFour = {date: data.list[32].dt_txt, humidity: data.list[32].main.humidity, temp: data.list[32].main.temp, wind: data.list[32].wind.speed}
-       var dayFive = {date: data.list[39].dt_txt, humidity: data.list[39].main.humidity, temp: data.list[39].main.temp, wind: data.list[39].wind.speed}
+       var dayZero = {date: data.list[0].dt_txt, humidity: data.list[0].main.humidity, temp: data.list[0].main.temp, wind: data.list[0].wind.speed, icon: data.list[0].weather[0].icon}
+    //     var img0 = $('<img />', {src : 'http://webpage.com/images/' + $(dayZero.icon).val() +'.png'});
+    // img.appendTo('body');
+       var dayOne = {date: data.list[8].dt_txt, humidity: data.list[8].main.humidity, temp: data.list[8].main.temp, wind: data.list[8].wind.speed, icon: data.list[8].weather[0].icon}
+       var dayTwo = {date: data.list[16].dt_txt, humidity: data.list[16].main.humidity, temp: data.list[16].main.temp, wind: data.list[16].wind.speed, icon: data.list[16].weather[0].icon}
+       var dayThree = {date: data.list[24].dt_txt, humidity: data.list[24].main.humidity, temp: data.list[24].main.temp, wind: data.list[24].wind.speed, icon: data.list[24].weather[0].icon}
+       var dayFour = {date: data.list[32].dt_txt, humidity: data.list[32].main.humidity, temp: data.list[32].main.temp, wind: data.list[32].wind.speed, icon: data.list[32].weather[0].icon}
+       var dayFive = {date: data.list[39].dt_txt, humidity: data.list[39].main.humidity, temp: data.list[39].main.temp, wind: data.list[39].wind.speed, icon: data.list[29].weather[0].icon}
+
      //  var dayThree = {date: data.list[24].dt_txt, humidity: data.list[24].main.humidity, temp: data.list[24].main.temp}
       //  var unix2 = data.list[2].dt
       //  var unix3 = data.list[3].dt
@@ -100,33 +110,56 @@ function getForecastResults() {
       //  var dateThree = dayjs.unix3(unixTimestamp[3]).format('DD/MM/YYYY');
       //  var dateFour = dayjs.unix4(unixTimestamp[4]).format('DD/MM/YYYY');
       //  var dateFive = dayjs.unix5(unixTimestamp[5]).format('DD/MM/YYYY');
-      console.log(data.list[0].main.humidity);
-      console.log(data.list[0].main.temp);
+
     // console.log(array display in inspector)
       console.log(data.list);
      // console.log(test for getForecastResults API response received?)
       console.log("getForecastResults API response received!");
       callBackToForecast(dayZero);
-      document.getElementById("day0").innerHTML = "Today: " + JSON.stringify(dayZero);
+      document.getElementById("day0").innerHTML = "Today: " + JSON.stringify(dayZero) + dayZero.icon;
+   
+
+      var iconZero = dayZero.icon;
+      var iconurlZero = "https://openweathermap.org/img/w/" + iconZero + ".png";
+      $('#0icon').attr('src', iconurlZero);
 
       callBackToForecast(dayOne);
       document.getElementById("day1").innerHTML = "Today +1: " + JSON.stringify(dayOne);
+     
+      var iconOne = dayOne.icon;
+      var iconurlOne = "https://openweathermap.org/img/w/" + iconOne + ".png";
+      $('#1icon').attr('src', iconurlOne);
+
 
       callBackToForecast(dayTwo);
       document.getElementById("day2").innerHTML = "Today +2: " + JSON.stringify(dayTwo);
 
+      var iconTwo = dayTwo.icon;
+      var iconurlTwo = "https://openweathermap.org/img/w/" + iconTwo + ".png";
+      $('#2icon').attr('src', iconurlTwo);
+
       callBackToForecast(dayThree);
       document.getElementById("day3").innerHTML = "Today +3: " + JSON.stringify(dayThree);
+
+      var iconThree = dayThree.icon;
+      var iconurlThree = "https://openweathermap.org/img/w/" + iconThree + ".png";
+      $('#3icon').attr('src', iconurlThree);
 
       callBackToForecast(dayFour);
       document.getElementById("day4").innerHTML = "Today: +4" + JSON.stringify(dayFour);
 
+      var iconFour = dayFour.icon;
+      var iconurlFour = "https://openweathermap.org/img/w/" + iconFour + ".png";
+      $('#4icon').attr('src', iconurlFour);
+
       callBackToForecast(dayFive);
       document.getElementById("day5").innerHTML = "Today: +5" + JSON.stringify(dayFive);
  
-    
+      var iconFive = dayFive.icon;
+      var iconurlFive = "https://openweathermap.org/img/w/" + iconFive + ".png";
+      $('#5icon').attr('src', iconurlFive);
 
-  
+   
 
 
     });
@@ -135,8 +168,16 @@ function getForecastResults() {
 function callBackToForecast(day){
 
   console.log(day);
+ 
+
+
+
   return
 }
+
+// var imgOneCode = dayZero.icon;
+// var iconOneUrl = "http://openweathermap.org/img/w/" + imgOneCode + ".png";
+// $('#img1').attr('src', iconOneUrl);
 // var dayZero = getForecastResults()
 
 //var apiURL2 = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&appid=' + apiKey;
