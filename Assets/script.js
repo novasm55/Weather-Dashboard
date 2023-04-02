@@ -17,14 +17,17 @@ var apiKey = "a09d33651864566372276fdd0b24595f";
 var searchInput = document.getElementById("searchInput");
 var searchBtn = document.getElementById("searchBtn");
 
+var savedCities = [];
+
 searchBtn.addEventListener('click', getTodayResults);
 searchBtn.addEventListener('click', getForecastResults);
-searchBtn.addEventListener('click', saveCityEntered);
+// searchBtn.addEventListener('click', saveCityEntered);
 
 // Add local storage set to store search query
-function saveCityEntered() {
-  
-}
+// function saveCityEntered() {
+//   savedCities.append(cityName);
+//   console.log(savedCities);
+// }
 console.log("test is displaying!");
 
 //Today's API 
@@ -48,6 +51,8 @@ function getTodayResults() {
         document.getElementById("cityName").innerHTML = "Location: " + cityName;
           //var date = dayjs.unix(unixTimestamp).format('DD/MM/YYYY');
         console.log(cityName);
+  
+        localStorage.setItem("savedCities", cityName);
         console.log("getTodayResults API response received!");
         
         callBackToCurrent(cityName);
@@ -56,7 +61,8 @@ function getTodayResults() {
   }   
   function callBackToCurrent(name){
     cityName = name;
-    console.log(cityName)
+    console.log(cityName);
+    console.log(savedCities);
     return
   }
 
