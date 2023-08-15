@@ -98,10 +98,10 @@ function getForecastResults() {
        var dayZero = {date: data.list[0].dt_txt, humidity: data.list[0].main.humidity, temp: data.list[0].main.temp, wind: data.list[0].wind.speed, icon: data.list[0].weather[0].icon}
     //     var img0 = $('<img />', {src : 'http://webpage.com/images/' + $(dayZero.icon).val() +'.png'});
     // img.appendTo('body');
-       var dayOne = {date: data.list[8].dt_txt, humidity: data.list[8].main.humidity, temp: data.list[8].main.temp, wind: data.list[8].wind.speed, icon: data.list[8].weather[0].icon}
-       var dayTwo = {date: data.list[16].dt_txt, humidity: data.list[16].main.humidity, temp: data.list[16].main.temp, wind: data.list[16].wind.speed, icon: data.list[16].weather[0].icon}
-       var dayThree = {date: data.list[24].dt_txt, humidity: data.list[24].main.humidity, temp: data.list[24].main.temp, wind: data.list[24].wind.speed, icon: data.list[24].weather[0].icon}
-       var dayFour = {date: data.list[32].dt_txt, humidity: data.list[32].main.humidity, temp: data.list[32].main.temp, wind: data.list[32].wind.speed, icon: data.list[32].weather[0].icon}
+       var dayOne = {date: data.list[7].dt_txt, humidity: data.list[8].main.humidity, temp: data.list[8].main.temp, wind: data.list[8].wind.speed, icon: data.list[8].weather[0].icon}
+       var dayTwo = {date: data.list[15].dt_txt, humidity: data.list[16].main.humidity, temp: data.list[16].main.temp, wind: data.list[16].wind.speed, icon: data.list[16].weather[0].icon}
+       var dayThree = {date: data.list[23].dt_txt, humidity: data.list[24].main.humidity, temp: data.list[24].main.temp, wind: data.list[24].wind.speed, icon: data.list[24].weather[0].icon}
+       var dayFour = {date: data.list[31].dt_txt, humidity: data.list[32].main.humidity, temp: data.list[32].main.temp, wind: data.list[32].wind.speed, icon: data.list[32].weather[0].icon}
        var dayFive = {date: data.list[39].dt_txt, humidity: data.list[39].main.humidity, temp: data.list[39].main.temp, wind: data.list[39].wind.speed, icon: data.list[29].weather[0].icon}
 
      //  var dayThree = {date: data.list[24].dt_txt, humidity: data.list[24].main.humidity, temp: data.list[24].main.temp}
